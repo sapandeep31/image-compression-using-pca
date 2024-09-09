@@ -34,20 +34,6 @@ This Flask application allows users to upload images, compress them using Princi
     pip install -r requirements.txt
     ```
 
-3. **Create a `requirements.txt` file:**
-
-    To ensure you have the correct dependencies, you can generate a `requirements.txt` file:
-
-    ```bash
-    pip freeze > requirements.txt
-    ```
-
-4. **Create directories for uploads and compressed images:**
-
-    ```bash
-    mkdir -p static/uploads static/compressed
-    ```
-
 ## Usage
 
 1. **Run the Flask application:**
