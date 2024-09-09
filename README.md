@@ -1,23 +1,92 @@
-## Image Compression using PCA
+# Flask Image Compression App
 
-### Overview
-This project demonstrates the use of Principal Component Analysis (PCA) for compressing images. PCA is a popular dimensionality reduction technique that can be effectively applied to image data to reduce its size while retaining essential information. 
+This Flask application allows users to upload images, compress them using Principal Component Analysis (PCA), and download the compressed version. The application utilizes OpenCV and scikit-learn for image processing and PCA-based compression.
 
-### Key Takeaways
-1. **PCA for Image Compression:** PCA is employed to decompose the image into its principal components, effectively reducing its dimensionality.
-2. **Channel-wise Compression:** The image is split into its RGB channels, and PCA is applied separately to each channel for better compression.
-3. **Reconstruction:** After compressing each channel, the compressed components are used to reconstruct the image.
-4. **Visualization:** The original and compressed images are displayed side by side to visually assess the effectiveness of compression.
+## Features
 
-### Benefits
-- **Reduced Storage Space:** PCA compression significantly reduces the storage space required for images while maintaining visual quality.
-- **Fast Processing:** PCA-based compression is computationally efficient, making it suitable for real-time applications.
-- **Retained Information:** Despite the reduction in size, PCA compression retains the essential features of the image, making it suitable for various applications.
+- Upload image files in PNG, JPG, or JPEG formats.
+- Compress images using PCA with configurable components.
+- Download the compressed image.
 
-### Usage
-- Clone the repository and install the required dependencies.
-- Replace the image path in the code with the path to the image you want to compress.
-- Run the code to see the original and compressed images side by side.
+## Requirements
 
-### Conclusion
-Image compression using PCA offers a practical solution for reducing the size of images while preserving essential features. By leveraging the power of PCA, this project provides insights into effective image compression techniques and opens avenues for further exploration in the field of image processing and computer vision.
+- Python 3.6+
+- Flask
+- OpenCV
+- scikit-learn
+
+## Installation
+
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/yourusername/your-repo.git
+    cd your-repo
+    ```
+
+2. **Install the required Python packages:**
+
+    You can create a virtual environment and install dependencies using `pip`:
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    pip install -r requirements.txt
+    ```
+
+3. **Create a `requirements.txt` file:**
+
+    To ensure you have the correct dependencies, you can generate a `requirements.txt` file:
+
+    ```bash
+    pip freeze > requirements.txt
+    ```
+
+4. **Create directories for uploads and compressed images:**
+
+    ```bash
+    mkdir -p static/uploads static/compressed
+    ```
+
+## Usage
+
+1. **Run the Flask application:**
+
+    ```bash
+    python app.py
+    ```
+
+2. **Access the app:**
+
+    Open your web browser and go to `http://127.0.0.1:5000/`.
+
+3. **Upload an image:**
+
+    Use the form on the homepage to upload an image file. The app will process the image and provide a link to download the compressed version.
+
+## How It Works
+
+1. **Image Upload:** Users upload an image through the web form.
+2. **Image Compression:** The uploaded image is saved temporarily, and PCA-based compression is applied to reduce its dimensionality.
+3. **Download:** The compressed image is made available for download.
+
+## Code Overview
+
+- `app.py`: Contains the Flask application setup, routes, and image handling logic.
+- `image_compression.py`: Defines the `compress_image` function, which performs PCA-based compression on the image.
+
+## Development
+
+- To contribute or develop further, fork the repository and create a pull request.
+- For any issues or feature requests, please open an issue on the repository.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Flask](https://flask.palletsprojects.com/)
+- [OpenCV](https://opencv.org/)
+- [scikit-learn](https://scikit-learn.org/)
+
