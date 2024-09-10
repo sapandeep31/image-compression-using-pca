@@ -17,6 +17,26 @@ This Flask application allows users to upload images, compress them using Princi
 
 ## Installation
 
+### Using Docker
+
+1. **Build the Docker image:**
+
+    ```bash
+    docker build -t image-compression-app .
+    ```
+
+2. **Run the Docker container:**
+
+    ```bash
+    docker run -p 5000:5000 image-compression-app
+    ```
+
+3. **Access the app:**
+
+    Open your web browser and go to `http://127.0.0.1:5000/`.
+
+### Without Docker
+
 1. **Clone the repository:**
 
     ```bash
@@ -34,19 +54,19 @@ This Flask application allows users to upload images, compress them using Princi
     pip install -r requirements.txt
     ```
 
-## Usage
-
-1. **Run the Flask application:**
+3. **Run the Flask application:**
 
     ```bash
     python app.py
     ```
 
-2. **Access the app:**
+4. **Access the app:**
 
     Open your web browser and go to `http://127.0.0.1:5000/`.
 
-3. **Upload an image:**
+## Usage
+
+1. **Upload an image:**
 
     Use the form on the homepage to upload an image file. The app will process the image and provide a link to download the compressed version.
 
@@ -75,4 +95,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Flask](https://flask.palletsprojects.com/)
 - [OpenCV](https://opencv.org/)
 - [scikit-learn](https://scikit-learn.org/)
-
