@@ -45,17 +45,33 @@ def index():
 
 @app.after_request
 def delete_files(response):
-    # Delete the uploaded and compressed files after the response is sent
-    for folder in [UPLOAD_FOLDER, COMPRESSED_FOLDER]:
-        for filename in os.listdir(folder):
-            file_path = os.path.join(folder, filename)
-            try:
+    # Clean up uploaded files
+    upload_folder = app.config['UPLOAD_FOLDER']
+    try:
+        if not os.path.exists(upload_folder):
+            os.makedirs(upload_folder)
+        for filename in os.listdir(upload_folder):
+            file_path = os.path.join(upload_folder, filename)
+            if os.path.isfile(file_path):
                 os.remove(file_path)
-            except Exception as e:
-                print(f"Error deleting file {file_path}: {e}")
+    except Exception as e:
+        app.logger.error(f"Error deleting files in {upload_folder}: {e}")
+
+    # Clean up compressed files
+    compressed_folder = app.config['COMPRESSED_FOLDER']
+    try:
+        if not os.path.exists(compressed_folder):
+            os.makedirs(compressed_folder)
+        for filename in os.listdir(compressed_folder):
+            file_path = os.path.join(compressed_folder, filename)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+    except Exception as e:
+        app.logger.error(f"Error deleting files in {compressed_folder}: {e}")
+
     return response
 
 if __name__ == '__main__':
     os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     os.makedirs(COMPRESSED_FOLDER, exist_ok=True)
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
