@@ -1,4 +1,4 @@
-# Flask Image Compression App
+# Image Compression App
 
 This Flask application allows users to upload images, compress them using Principal Component Analysis (PCA), and download the compressed version. The application utilizes OpenCV and scikit-learn for image processing and PCA-based compression.
 
